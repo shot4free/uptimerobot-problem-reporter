@@ -1,4 +1,4 @@
-
+#!/usr/bin/python3
 import http.client
 import json
 import ast
@@ -6,6 +6,7 @@ from gtts import gTTS
 import subprocess
 
 language = 'pl'
+dupa = "dupa"
 
 def pp_json(json_string):
 #    print(json.dumps(json.loads(json_string), sort_keys=False, indent=4))
@@ -13,7 +14,7 @@ def pp_json(json_string):
 
 conn = http.client.HTTPSConnection("api.uptimerobot.com")
 
-payload = "api_key=YOUR_API_KEY_HERE&format=json&logs=0&statuses=9"
+payload = "api_key=u448027-4815d1597d44ada5ce6fda4c&format=json&logs=0&statuses=9"
 
 headers = {
     'content-type': "application/x-www-form-urlencoded",
@@ -35,9 +36,18 @@ for key, value in js.items():
                 print(st)
 
                 dct = ast.literal_eval(st)
-                alarm = "UWAGA, devopsi! Rozjebał śię serwer"+ (dct['friendly_name'])
+                alarm = "UWAGA, devopsi! Rozjebal sie serwer"+ (dct['friendly_name'])
                 myobj = gTTS(text=alarm, lang=language, slow=False)
                 myobj.save("message.mp3")
                 audio_file = "message.mp3"
                 return_code = subprocess.call(["afplay", audio_file])
+
+if dupa == "dupa":
+    message = "Na razie wszystko jest OK"
+    myobj = gTTS(text=message, lang=language,slow=False)
+    myobj.save("message.mp3")
+    audio_file = "message.mp3"
+    return_code = subprocess.call(["afplay", audio_file])
+
+
 
