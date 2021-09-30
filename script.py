@@ -6,7 +6,7 @@ from gtts import gTTS
 import subprocess
 
 language = 'pl'
-dupa = "dupa"
+dup = "dup"
 
 def pp_json(json_string):
 #    print(json.dumps(json.loads(json_string), sort_keys=False, indent=4))
@@ -36,13 +36,13 @@ for key, value in js.items():
                 print(st)
 
                 dct = ast.literal_eval(st)
-                alarm = "UWAGA, devopsi! Rozjebal sie serwer"+ (dct['friendly_name'])
+                alarm = "UWAGA, devopsi! Rozwalil sie serwer"+ (dct['friendly_name'])
                 myobj = gTTS(text=alarm, lang=language, slow=False)
                 myobj.save("message.mp3")
                 audio_file = "message.mp3"
                 return_code = subprocess.call(["afplay", audio_file])
 
-if dupa == "dupa":
+if dup == "dup":
     message = "Na razie wszystko jest OK"
     myobj = gTTS(text=message, lang=language,slow=False)
     myobj.save("message.mp3")
