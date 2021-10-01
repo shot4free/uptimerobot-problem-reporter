@@ -36,7 +36,7 @@ for key, value in js.items():
                 print(st)
 
                 dct = ast.literal_eval(st)
-                alarm = "UWAGA, devopsi! Rozwalil sie serwer"+ (dct['friendly_name'])
+                alarm = "Attention, devops team. Server broken"+ (dct['friendly_name'])
                 myobj = gTTS(text=alarm, lang=language, slow=False)
                 myobj.save("message.mp3")
                 audio_file = "message.mp3"
